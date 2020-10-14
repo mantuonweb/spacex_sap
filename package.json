@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -11,7 +10,8 @@
     "dev:ssr": "ng run spaxssr:serve-ssr",
     "serve:ssr": "node dist/spaxssr/server/main.js",
     "build:ssr": "ng build --prod && ng run spaxssr:server:production",
-    "prerender": "ng run spaxssr:prerender"
+    "prerender": "ng run spaxssr:prerender",
+    "start": "node dist/spaxssr/server/main.js"
   },
   "private": true,
   "dependencies": {
