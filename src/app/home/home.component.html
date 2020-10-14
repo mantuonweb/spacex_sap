@@ -1,0 +1,25 @@
+<div class="text-center loader" *ngIf="selectLoading$|async">
+	<div class="spinner-border text-info" role="status">
+		<span class="sr-only">Loading...</span>
+	</div>
+</div>
+
+<div class="clearfix">
+	<div class="filter float-sm-left">
+		<div class="filter">
+			<spx-launch-filter (filter-change)="onFilterChange($event)"></spx-launch-filter>
+		</div>
+	</div>
+	<div class="mission float-sm-right">
+		<div>
+			<spx-launches [launches]="rowData$"></spx-launches>
+		</div>
+	</div>
+</div>
+
+<div class="no-record-found" *ngIf="((rowData$|async)?.length ==0) && !(selectLoading$|async) && !(error$|async)">
+	No records found
+</div>
+<div class="error-in-records" *ngIf="(error$|async) && !(selectLoading$|async)">
+	<span>Error in loading Records</span>
+</div>

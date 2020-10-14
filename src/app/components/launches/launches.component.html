@@ -1,0 +1,10 @@
+<div class="flex-container wrap">
+  <ng-container
+    *ngFor="let launch of (launches$|async)| slice:0:limitUpper;let ind = index"
+  >
+    <spx-launch
+      [launch]="launch"
+      class="d-flex launch-item flex-item has-right-margin"
+    ></spx-launch>
+  </ng-container>
+</div>

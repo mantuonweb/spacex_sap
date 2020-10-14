@@ -1,0 +1,17 @@
+.main-container {
+  padding: 10px;
+  min-height: calc(100vh - 50px);
+}
+.dev-sign text-center {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  height: 50px;
+  bottom: 10px;
+}
+@media only screen and (min-width: 701px) {
+  .dev-sign {
+    .line-break {
+      display: none;
+    }
+  }
+}

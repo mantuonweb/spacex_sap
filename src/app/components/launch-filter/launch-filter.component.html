@@ -1,0 +1,32 @@
+<div class="card">
+	<h5 class="card-title title-text">Filters</h5>
+	<div class="card-body">
+		<div class="filter-title text-center">
+			Launch Year
+		</div>
+		<div *ngFor="let year of years">
+			<div class="clearfix filter-action">
+				<button type="button" class="btn btn-success first float-left" [ngClass]="{'active':isYearActive(year.left)}" (click)="onYearFilter(year.left)">{{year.left}}</button>
+				<button  *ngIf="year.right" type="button" class="btn btn-success second float-right" [ngClass]="{'active':isYearActive(year.right)}" (click)="onYearFilter(year.right)">{{year.right}}</button>
+			</div>
+		</div>
+		<div class="filter-title text-center">
+			Successful Launch
+		</div>
+		<div>
+			<div class="clearfix filter-action">
+				<button type="button" class="btn btn-success first float-left" (click)="onSuccessfulLaunch(true)" [ngClass]="{'active':(isSuccessful===true)}">True</button>
+				<button type="button" class="btn btn-success second float-right" (click)="onSuccessfulLaunch(false)" [ngClass]="{'active':(isSuccessful===false)}">False</button>
+			</div>
+		</div>
+		<div class="filter-title text-center">
+			Successful landing
+		</div>
+		<div>
+			<div class="clearfix filter-action">
+				<button type="button" class="btn btn-success first float-left" (click)="onSuccessfulLand(true)" [ngClass]="{'active':(isLand===true)}">True</button>
+				<button type="button" class="btn btn-success second float-right" (click)="onSuccessfulLand(false)" [ngClass]="{'active':(isLand===false)}">False</button>
+			</div>
+		</div>
+	</div>
+</div>
