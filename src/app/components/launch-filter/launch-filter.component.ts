@@ -1,5 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
-
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 
 @Component({
   selector: "spx-launch-filter",
@@ -11,7 +10,7 @@ export class LaunchFilterComponent implements OnInit {
   isSuccessful;
   year;
   isLand;
-  filters: any = {
+  @Input("filters") filters = {
     year: undefined,
     land: undefined,
     launch: undefined
@@ -35,7 +34,13 @@ export class LaunchFilterComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.filters) {
+      this.year = this.filters.year;
+      this.isLand = this.filters.land;
+      this.isSuccessful = this.filters.launch;
+    }
+  }
   onYearFilter(year) {
     if (year === this.year) {
       this.year = undefined;
@@ -57,7 +62,7 @@ export class LaunchFilterComponent implements OnInit {
     this.filters = {
       ...this.filters,
       launch: this.isSuccessful
-    }
+    };
     this.onFilterChange.emit(this.filters);
   }
   onSuccessfulLand(isLand) {
