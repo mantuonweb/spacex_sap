@@ -16,9 +16,4 @@ export class LaunchComponent implements OnInit {
   onLoad(){
     this.loading = false;
   }
-  getName(){
-    if(this.launch && this.launch.missionName){
-      return this.launch.missionName.length>20? this.launch.missionName.substring(0,20)+"...":this.launch.missionName;
-    }
-  }
 }
