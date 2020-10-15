@@ -7,10 +7,10 @@ import { environment } from "../../../environments/environment";
 @Injectable()
 export class HomeService {
   url = environment.url;
+  hydratedState = "FILTER_STATE";
   constructor(private http: HttpClient) {}
   getCaurses(pageSize = 10, launch?: boolean, land?: boolean, year?: number) {
     let params = new HttpParams();
-    // params = params.append('_page', 1);
     params = params.append("limit", pageSize.toString());
     if (launch != undefined) {
       params = params.append("launch_success", launch.toString());
@@ -45,5 +45,20 @@ export class HomeService {
   }
   editCourse(course) {
     return of(course).pipe(delay(1000));
+  }
+  hydarateFilter(filter) {
+    let { launch, land, year } = filter;
+    sessionStorage.setItem(
+      this.hydratedState,
+      JSON.stringify({ launch, land, year })
+    );
+  }
+  getState() {
+    let sessionFilter = sessionStorage.getItem(this.hydratedState);
+    let sessionFilterJSON = {};
+    try {
+      sessionFilterJSON = JSON.parse(sessionFilter);
+    } catch {}
+    return sessionFilterJSON;
   }
 }
