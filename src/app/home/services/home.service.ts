@@ -3,12 +3,13 @@ import { of } from "rxjs";
 import { delay, map } from "rxjs/operators";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
+import { SessionStorageService } from 'src/app/services/session-storage';
 
 @Injectable()
 export class HomeService {
   url = environment.url;
-  hydratedState = "FILTER_STATE";
-  constructor(private http: HttpClient) {}
+  private hydratedState = "FILTER_STATE";
+  constructor(private http: HttpClient,private sessionStorage:SessionStorageService) {}
   getCaurses(pageSize = 10, launch?: boolean, land?: boolean, year?: number) {
     let params = new HttpParams();
     params = params.append("limit", pageSize.toString());
@@ -48,13 +49,13 @@ export class HomeService {
   }
   hydarateFilter(filter) {
     let { launch, land, year } = filter;
-    sessionStorage.setItem(
+    this.sessionStorage.setItem(
       this.hydratedState,
       JSON.stringify({ launch, land, year })
     );
   }
   getState() {
-    let sessionFilter = sessionStorage.getItem(this.hydratedState);
+    let sessionFilter = this.sessionStorage.getItem(this.hydratedState);
     let sessionFilterJSON = {};
     try {
       sessionFilterJSON = JSON.parse(sessionFilter);

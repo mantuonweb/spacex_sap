@@ -7,7 +7,7 @@
 <div class="clearfix">
 	<div class="filter float-sm-left">
 		<div class="filter">
-			<spx-launch-filter (filter-change)="onFilterChange($event)"></spx-launch-filter>
+			<spx-launch-filter [filters]="filters" (filter-change)="onFilterChange($event)"></spx-launch-filter>
 		</div>
 	</div>
 	<div class="mission float-sm-right">
@@ -17,7 +17,7 @@
 	</div>
 </div>
 
-<div class="no-record-found" *ngIf="((rowData$|async)?.length ==0) && !(selectLoading$|async) && !(error$|async)">
+<div class="no-record-found" *ngIf="((rowData$|async)?.length == 0) && !(selectLoading$|async) && !(error$|async)">
 	No records found
 </div>
 <div class="error-in-records" *ngIf="(error$|async) && !(selectLoading$|async)">

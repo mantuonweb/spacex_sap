@@ -30,6 +30,7 @@ export class HomeEffects {
       ofType(HomeActions.loadHomes),
       tap(action => {
         actionData = action;
+        this.homeService.hydarateFilter(action);
       }),
       withLatestFrom(this.store.select(selectMissionWithFilter)),
       filter(([_, mission]) => {

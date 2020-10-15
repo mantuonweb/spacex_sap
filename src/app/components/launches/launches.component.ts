@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { fromEvent } from "rxjs";
 import { debounceTime } from "rxjs/operators";
+declare var document;
 @Component({
   selector: "spx-launches",
   templateUrl: "./launches.component.html",

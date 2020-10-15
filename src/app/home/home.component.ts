@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
     this.error$ = this.store.select(selectErrorStatus);
     this.selectLoading$ = this.store.select(selectMissionLoading);
     this.filters = this.homeService.getState();
+    console.log(this.filters)
   }
   ngOnInit(): void {
     this.dispatchLoadMission();
