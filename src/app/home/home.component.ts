@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
+import { HomeService } from "./services/home.service";
 import { loadHomes, setHomeFilter } from "./store/actions/home.actions";
 import { State } from "./store/reducers/home.reducer";
 import {
@@ -19,10 +20,11 @@ export class HomeComponent implements OnInit {
   rowData$;
   selectLoading$;
   error$;
-  constructor(private store: Store<State>) {
+  constructor(private store: Store<State>, private homeService: HomeService) {
     this.rowData$ = this.store.select(selectMissionWithFilter);
     this.error$ = this.store.select(selectErrorStatus);
     this.selectLoading$ = this.store.select(selectMissionLoading);
+    this.filters = this.homeService.getState();
   }
   ngOnInit(): void {
     this.dispatchLoadMission();
