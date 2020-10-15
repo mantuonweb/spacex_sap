@@ -15,7 +15,7 @@
     />
   </div>
   <div class="card-body">
-    <h5 class="card-title title-text" [title]="launch.missionName">{{getName()}}</h5>
+    <h5 class="card-title title-text" [title]="launch.missionName">{{launch.missionName}}</h5>
     <b>Mission ids:</b><br />
     <ul class="mission-ids">
       <li *ngFor="let id of launch.missionId">
