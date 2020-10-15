@@ -21,6 +21,9 @@
   }
   .card {
     width: 100%;
+    .card-img-top {
+      width: 100%;
+    }
   }
 }
 @media only screen and (min-width: 701px) and (max-width: 1024px) {
@@ -29,6 +32,9 @@
   }
   .card {
     width: 100%;
+    .card-img-top {
+      width: 100%;
+    }
   }
 }
 @media only screen and (min-width: 1025px) {
@@ -37,5 +43,8 @@
   }
   .card {
     width: 100%;
+    .card-img-top {
+      width: 100%;
+    }
   }
 }
