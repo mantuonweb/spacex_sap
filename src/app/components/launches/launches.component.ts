@@ -14,10 +14,14 @@ export class LaunchesComponent implements OnInit {
   ngOnInit() {
     const scroll$ = fromEvent(document, "scroll").pipe(debounceTime(300));
     const el = document.querySelector("body");
+
     scroll$.subscribe(e => {
       if (this.hasReachedBottom()) {
         this.limitUpper = Math.min(this.limitUpper + 10, 100);
       }
+    });
+    this.launches$.subscribe(() => {
+      this.limitUpper = 15;
     });
   }
 
