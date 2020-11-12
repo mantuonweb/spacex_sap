@@ -33,12 +33,14 @@ export class HomeService {
   }
   mapToUIModel(launch, land) {
     return {
+      guid:this.uuidv4(),
       missionId: launch.mission_id,
       missionName: launch.mission_name,
       isSuccess: launch.launch_success,
       launchYear: launch.launch_year,
       icon: launch.links.mission_patch_small,
-      launchLanding: Boolean(land || launch.launch_landing)
+      launchLanding: Boolean(land || launch.launch_landing),
+      data:launch
     };
   }
   saveCourse(course) {
@@ -61,5 +63,11 @@ export class HomeService {
       sessionFilterJSON = JSON.parse(sessionFilter);
     } catch {}
     return sessionFilterJSON;
+  }
+  uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
   }
 }

@@ -10,10 +10,11 @@ import { HomeService } from "./services/home.service";
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { CommonComponentsModule } from "../components/component.module";
+import { LaunchDetailsComponent } from './launch-details/launch-details.component';
 
 @NgModule({
   providers: [HomeService],
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, LaunchDetailsComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
