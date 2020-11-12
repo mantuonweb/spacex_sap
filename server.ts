@@ -7,6 +7,9 @@ import { join } from 'path';
 import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
+//https://github.com/jaredpalmer/after.js/issues/219
+import { XMLHttpRequest } from 'xmlhttprequest-ssl';    
+global.XMLHttpRequest = XMLHttpRequest; 
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
