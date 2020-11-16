@@ -11,10 +11,11 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { CommonComponentsModule } from "../components/component.module";
 import { LaunchDetailsComponent } from './launch-details/launch-details.component';
+import { MediaDetailsComponent } from './media-details/media-details.component';
 
 @NgModule({
   providers: [HomeService],
-  declarations: [HomeComponent, LaunchDetailsComponent],
+  declarations: [HomeComponent, LaunchDetailsComponent, MediaDetailsComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

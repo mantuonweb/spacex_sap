@@ -32,3 +32,14 @@ export const selectMissionWithFilter = createSelector(
     return list ? list.list : [];
   }
 );
+
+export const getSelectedMission = createSelector(
+  selectHomeState,
+  state => {
+    let list = state.list.find((item: any) => {
+      return item.filterText === state.filterText;
+    });
+    let tlist = list ? list.list : [];
+    return tlist.find(item=>item.guid === state.selectedMission);
+  }
+);

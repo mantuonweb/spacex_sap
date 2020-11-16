@@ -12,13 +12,15 @@ export interface State extends AppState {
   filterText?: string;
   error: any;
   list: Array<Missions>;
+  selectedMission?:string;
 }
 
 export const initialState: State = {
   loading: false,
   list: [],
   error: null,
-  filterText: ""
+  filterText: "",
+  selectedMission:undefined
 };
 
 export const reducer = createReducer(
@@ -62,7 +64,14 @@ export const reducer = createReducer(
       ...state,
       filterText: action.filterText
     };
-  })
+  }),
+  on(HomeActions.setCurrentMission, (state, action) => {
+    return {
+      ...state,
+      selectedMission: action.guid
+    };
+  }),
+  
 );
 
 function formatMission(list, action) {

@@ -21,3 +21,8 @@ export const setHomeFilter = createAction(
 export const resetLoadingStatus = createAction(
   "[Missions] Reset Loading Status"
 );
+
+export const setCurrentMission = createAction(
+  "[Missions] Set Current Missions",
+  props<{ guid:string }>()
+);

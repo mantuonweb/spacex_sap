@@ -1,0 +1,29 @@
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <!-- {{links}} -->
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" [attr.data-slide-to]="i" [ngClass]="{'active':i==0}" *ngFor="let link of getLinks(); let i=index;"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active" [ngClass]="{'active':i==0}" *ngFor="let link of getLinks(); let i=index;">
+        <ng-container *ngIf="link.includes('.jpg') || link.includes('.png')" >
+            <img class="d-block w-100" [src]="link" alt="First slide">
+        </ng-container>
+        <ng-container *ngIf="link.includes('wikipedia') || link.includes('space.com') || link.includes('.html')" >
+            <iframe class="d-block w-100" [src]="photoURL(link)" alt="First slide"></iframe>
+        </ng-container>
+        <ng-container *ngIf="link.includes('youtube')" >
+            <iframe class="d-block w-100" [src]="photoURL(link)" alt="First slide"></iframe>
+        </ng-container>
+        
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
